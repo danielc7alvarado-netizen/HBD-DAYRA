@@ -303,21 +303,19 @@ Hoy celebramos un día muy especial, celebramos tu cumpleaños 💖
   </div>
 </div>
 
-<div style="margin-top:20px;">
-  <div class="boton-musica" onclick="document.getElementById('ytmusic').style.display='block'">
-    🎵
-  </div>
+<div class="boton-musica" onclick="playMusic()">
+  🎵 Música
 </div>
 
-<!-- Reproductor oculto -->
-<iframe 
-  id="ytmusic"
-  width="0"
-  height="0"
-  src="https://www.youtube.com/embed/SPs1xcOTRG4?autoplay=1&loop=1&playlist=SPs1xcOTRG4"
-  allow="autoplay"
-  style="display:none;">
-</iframe>
+<audio id="musicaFondo" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic() {
+  document.getElementById("musicaFondo").play();
+}
+</script>
 
 <div class="galeria">
   <img src="foto1.jpeg">
