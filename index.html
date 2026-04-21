@@ -12,14 +12,16 @@
   .elemento {
   position: fixed;
   bottom: -50px;
-  font-size: 20px;
   animation: flotar linear infinite;
-  opacity: 0.8;
+  pointer-events: none;
 }
 
 @keyframes flotar {
   0% {
     transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
     opacity: 1;
   }
   100% {
@@ -27,22 +29,29 @@
     opacity: 0;
   }
 }
-  <script>
-const elementos = ["💖","🎂","📐","✏️"];
+ <script>
+const elementos = [
+  "💖","💗","💞",
+  "🎂","🎉","🎈",
+  "📐","✏️","✎",
+  "<img src='casco.png' width='25'>"
+];
 
 setInterval(() => {
   let el = document.createElement("div");
   el.className = "elemento";
+
   el.innerHTML = elementos[Math.floor(Math.random()*elementos.length)];
 
   el.style.left = Math.random()*100 + "vw";
   el.style.fontSize = (Math.random()*20 + 15) + "px";
-  el.style.animationDuration = (Math.random()*3 + 4) + "s";
+  el.style.animationDuration = (Math.random()*4 + 5) + "s";
+  el.style.opacity = Math.random();
 
   document.body.appendChild(el);
 
-  setTimeout(() => el.remove(), 7000);
-}, 800);
+  setTimeout(() => el.remove(), 8000);
+}, 500);
 </script>
 
 body{
