@@ -139,6 +139,21 @@ button{
   background:#ff4e50;
   color:white;
 }
+  @keyframes explode{
+  0%{
+    transform: scale(1);
+    opacity:1;
+  }
+  100%{
+    transform: translateY(-80px) scale(1.5);
+    opacity:0;
+  }
+}
+  @keyframes brillo{
+  0%{opacity:0;}
+  50%{opacity:1;}
+  100%{opacity:0;}
+}
 </style>
 </head>
 
@@ -216,6 +231,39 @@ setInterval(() => {
   setTimeout(() => el.remove(), 8000);
 }, 500);
 </script>
-  
+  <script>
+document.addEventListener("click", function(e){
+  for(let i=0;i<6;i++){
+    let corazon = document.createElement("div");
+    corazon.innerHTML = "💖";
+    corazon.style.position = "fixed";
+    corazon.style.left = e.clientX + "px";
+    corazon.style.top = e.clientY + "px";
+    corazon.style.fontSize = (Math.random()*15+15) + "px";
+    corazon.style.pointerEvents = "none";
+    corazon.style.animation = "explode 1s forwards";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>corazon.remove(),1000);
+  }
+});
+</script>
+  <script>
+setInterval(()=>{
+  let estrella = document.createElement("div");
+  estrella.innerHTML = "✨";
+  estrella.style.position = "fixed";
+  estrella.style.left = Math.random()*100 + "vw";
+  estrella.style.top = Math.random()*100 + "vh";
+  estrella.style.opacity = Math.random();
+  estrella.style.fontSize = "15px";
+  estrella.style.animation = "brillo 2s linear";
+
+  document.body.appendChild(estrella);
+
+  setTimeout(()=>estrella.remove(),2000);
+}, 300);
+</script>
 </body>
 </html>
