@@ -154,6 +154,68 @@ button{
   50%{opacity:1;}
   100%{opacity:0;}
 }
+  .sobre{
+  position:relative;
+  width:300px;
+  margin:30px auto;
+  cursor:pointer;
+}
+
+.tapa{
+  width:100%;
+  height:150px;
+  background:#ff8fa3;
+  position:absolute;
+  top:0;
+  left:0;
+  transform-origin:top;
+  transition: transform 1s;
+}
+
+.contenido{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  transform: translateY(50px);
+  opacity:0;
+  transition: all 1s;
+}
+
+.sobre.abierto .tapa{
+  transform: rotateX(180deg);
+}
+
+.sobre.abierto .contenido{
+  transform: translateY(0);
+  opacity:1;
+}
+  <style>
+
+/* lo que ya tienes */
+
+#intro{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#ff9a9e;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+  z-index:9999;
+  animation: desaparecer 2s forwards;
+  animation-delay:2s;
+}
+
+@keyframes desaparecer{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+</style>
 </style>
 </head>
 
@@ -166,19 +228,20 @@ button{
 
 <button onclick="mostrarCarta()">Abrir sorpresa 💝</button>
 
-<div id="carta" class="carta">
-  <h3>💌 Para ti</h3>
-  <p>
-  Hoy no solo celebramos tu cumpleaños, celebramos lo increíble que eres 💖  
-  Tu forma de ver el mundo, de diseñar, de crear, tu perseverancia, tu imaginación,
-    admiro mucho la mujer que eres en todos los sentidos y siempre estare orgulloso
-    de ti, llevo conmigo muchas cosas buenas de ti.
-  Espero que este sea solo uno de muchos días hermosos en tu vida te deseo lo mejor
-    siempre, toda la vida te quiero ver sonreir y que te sucedan cosas maravillosas.✨
-    Proverbios 31:10: "Mujer virtuosa, ¿quién la hallará? Porque 
-    su estima sobrepasa largamente a la de las piedras preciosas".
-            🎉 QUE VIVA LA ARQUI MAS BELLA DE TODAS 🎉
-  </p>
+<div class="sobre" onclick="abrirCarta()">
+  <div class="tapa"></div>
+  <div class="contenido" id="carta">
+    <h3>💌 Para ti</h3>
+    <p>
+                        Hoy no solo celebramos tu cumpleaños, celebramos lo increíble que eres 💖 
+                     Tu forma de ver el mundo, de diseñar, de crear, tu perseverancia, tu imaginación, 
+                  admiro mucho la mujer que eres en todos los sentidos y siempre estare orgulloso de ti,
+               llevo conmigo muchas cosas buenas de ti. Espero que este sea solo uno de muchos días hermosos 
+          en tu vida te deseo lo mejor siempre, toda la vida te quiero ver sonreir y que te sucedan cosas maravillosas.✨
+      Proverbios 31:10: "Mujer virtuosa, ¿quién la hallará? Porque su estima sobrepasa largamente a la de las piedras preciosas".
+                                  🎉 QUE VIVA LA ARQUI MAS BELLA DE TODAS 🎉  
+    </p>
+  </div>
 </div>
 <div style="margin-top:20px;">
  <a id="btnMusica" href="https://www.youtube.com/results?search_query=Damiano+David+The+First+Time" target="_blank" style="text-decoration:none; display:none;">
@@ -265,5 +328,31 @@ setInterval(()=>{
   setTimeout(()=>estrella.remove(),2000);
 }, 300);
 </script>
+  <script>
+function abrirCarta(){
+  const sobre = document.querySelector(".sobre");
+  const musica = document.getElementById("btnMusica");
+
+  sobre.classList.add("abierto");
+
+  setTimeout(()=>{
+    musica.style.display="block";
+  },1500);
+}
+</script>
+<audio id="clickSound">
+  <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("click", ()=>{
+  document.getElementById("clickSound").play();
+});
+</script>
 </body>
+</html>
+</body>
+  <div id="intro">
+  💖 Feliz Cumpleaños Dayrita 💖
+</div>
 </html>
