@@ -29,31 +29,7 @@
     opacity: 0;
   }
 }
- <script>
-const elementos = [
-  "💖","💗","💞",
-  "🎂","🎉","🎈",
-  "📐","✏️","✎",
-  "<img src='casco.png' width='25'>"
-];
-
-setInterval(() => {
-  let el = document.createElement("div");
-  el.className = "elemento";
-
-  el.innerHTML = elementos[Math.floor(Math.random()*elementos.length)];
-
-  el.style.left = Math.random()*100 + "vw";
-  el.style.fontSize = (Math.random()*20 + 15) + "px";
-  el.style.animationDuration = (Math.random()*4 + 5) + "s";
-  el.style.opacity = Math.random();
-
-  document.body.appendChild(el);
-
-  setTimeout(() => el.remove(), 8000);
-}, 500);
-</script>
-
+ 
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
@@ -152,4 +128,26 @@ function mostrar(){
 </script>
 
 </body>
+  <script>
+const elementos = [
+  "💖","💗","💞",
+  "🎂","🎉","🎈",
+  "📐","✏️","✎"
+];
+
+setInterval(() => {
+  let el = document.createElement("div");
+  el.className = "elemento";
+
+  el.innerHTML = elementos[Math.floor(Math.random()*elementos.length)];
+
+  el.style.left = Math.random()*100 + "vw";
+  el.style.fontSize = (Math.random()*20 + 15) + "px";
+  el.style.animationDuration = (Math.random()*4 + 5) + "s";
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 8000);
+}, 500);
+</script>
 </html>
