@@ -29,7 +29,26 @@
     opacity: 0;
   }
 }
- 
+ .galeria img{
+  width:220px;
+  margin:10px;
+  border-radius:15px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  opacity:0;
+  transform: translateY(30px);
+  animation: aparecer 1s forwards;
+}
+
+.galeria img:nth-child(1){ animation-delay:0.3s; }
+.galeria img:nth-child(2){ animation-delay:0.6s; }
+.galeria img:nth-child(3){ animation-delay:0.9s; }
+
+@keyframes aparecer{
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
@@ -97,12 +116,21 @@ button{
 
 <p>Hoy celebramos a alguien que diseña sueños y construye inspiración 💖</p>
 
-<button onclick="mostrar()">Haz clic aquí 🎁</button>
+<button onclick="mostrarCarta()">Abrir sorpresa 💝</button>
+
+<div id="carta" style="display:none; max-width:500px; margin:20px auto; background:white; color:#333; padding:20px; border-radius:15px;">
+  <h3>💌 Para ti</h3>
+  <p>
+  Hoy no solo celebramos tu cumpleaños, celebramos lo increíble que eres 💖  
+  Tu forma de ver el mundo, de diseñar, de crear… me inspira mucho.  
+  Espero que este sea solo uno de muchos días hermosos en tu vida ✨  
+  </p>
+</div>
 
 <p id="mensaje"></p>
 
 <!-- GALERÍA DE FOTOS -->
-<div class="galeria">
+<div class="galeria" id="galeria">
   <img src="foto1.jpeg">
   <img src="foto2.jpeg">
   <img src="foto3.jpeg">
@@ -114,7 +142,18 @@ function mostrar(){
   "Eres increíble, gracias por inspirar tanto 💫💖";
 }
 </script>
-
+<script>
+let scroll = 0;
+setInterval(() => {
+  scroll += 1;
+  document.getElementById("galeria").scrollLeft = scroll;
+}, 30);
+</script>
+  <script>
+function mostrarCarta(){
+  document.getElementById("carta").style.display = "block";
+}
+</script>
 </body>
   <script>
 const elementos = [
