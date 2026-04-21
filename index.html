@@ -249,6 +249,26 @@ video {
   color: white;
   cursor: pointer;
 }
+  .img-btn {
+  padding: 12px 20px;
+  font-size: 18px;
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.img-btn:hover {
+  background: #4b3cc4;
+}
+
+/* imagen dentro del modal */
+#myImage {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
 </style>
 </head>
 
@@ -415,6 +435,44 @@ window.onclick = function(e) {
     modal.style.display = "none";
     video.pause();
     video.currentTime = 0;
+  }
+}
+</script>
+  <!-- Botón para abrir imagen -->
+<button id="openImageBtn" class="img-btn">
+  Ver imagen 🖼️
+</button>
+
+<!-- Modal de imagen -->
+<div id="imageModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" id="closeImage">&times;</span>
+
+    <!-- TU IMAGEN AQUÍ -->
+    <img id="myImage" src="TU_IMAGEN_AQUI.jpg" alt="Imagen" />
+
+  </div>
+</div>
+  <script>
+const openImageBtn = document.getElementById("openImageBtn");
+const imageModal = document.getElementById("imageModal");
+const closeImage = document.getElementById("closeImage");
+
+// abrir imagen
+openImageBtn.onclick = function() {
+  imageModal.style.display = "flex";
+}
+
+// cerrar imagen
+closeImage.onclick = function() {
+  imageModal.style.display = "none";
+}
+
+// cerrar al dar click fuera
+window.onclick = function(e) {
+  if (e.target == imageModal) {
+    imageModal.style.display = "none";
   }
 }
 </script>
