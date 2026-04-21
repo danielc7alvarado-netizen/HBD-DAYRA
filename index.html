@@ -196,6 +196,59 @@ button{
   opacity:1;
   transform: translateY(0);
 }
+  .video-btn {
+  padding: 12px 20px;
+  font-size: 18px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.video-btn:hover {
+  background: #ff1e4d;
+}
+
+/* Fondo oscuro */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+  position: relative;
+  background: #000;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 90%;
+}
+
+/* Video responsivo */
+video {
+  width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+/* Botón cerrar */
+.close {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
 </style>
 </head>
 
@@ -317,6 +370,53 @@ setInterval(()=>{
   setTimeout(()=>estrella.remove(),2000);
 }, 300);
 </script>
+<!-- Botón para abrir video -->
+<button id="openVideoBtn" class="video-btn">
+  Ver video 🎬
+</button>
 
+<!-- Modal del video -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    
+    <!-- Botón cerrar -->
+    <span class="close" id="closeModal">&times;</span>
+
+    <!-- Video -->
+    <video id="myVideo" controls>
+      <source src="DAYRA.VID" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+
+  </div>
+</div>
+  <script>
+const openBtn = document.getElementById("openVideoBtn");
+const modal = document.getElementById("videoModal");
+const closeBtn = document.getElementById("closeModal");
+const video = document.getElementById("myVideo");
+
+// abrir modal
+openBtn.onclick = function() {
+  modal.style.display = "flex";
+  video.play(); // autoplay
+}
+
+// cerrar modal
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+  video.pause();
+  video.currentTime = 0;
+}
+
+// cerrar si haces click fuera del video
+window.onclick = function(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
+  }
+}
+</script>
 </body>
 </html>
