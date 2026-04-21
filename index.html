@@ -49,6 +49,22 @@
     transform: translateY(0);
   }
 }
+  .carta{
+  max-width:500px;
+  margin:20px auto;
+  background:white;
+  color:#333;
+  padding:20px;
+  border-radius:15px;
+  opacity:0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.carta.mostrar{
+  opacity:1;
+  transform: translateY(0);
+}
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
@@ -106,7 +122,23 @@ button{
   margin-top:20px;
   font-size:18px;
 }
+.boton-musica{
+  margin:20px auto;
+  width:260px;
+  background:white;
+  color:#ff4e50;
+  padding:12px;
+  border-radius:25px;
+  font-weight:bold;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
 
+.boton-musica:hover{
+  transform: scale(1.1);
+  background:#ff4e50;
+  color:white;
+}
 </style>
 </head>
 
@@ -118,7 +150,7 @@ button{
 
 <button onclick="mostrarCarta()">Abrir sorpresa 💝</button>
 
-<div id="carta" style="display:none; max-width:500px; margin:20px auto; background:white; color:#333; padding:20px; border-radius:15px;">
+<div id="carta" class="carta">
   <h3>💌 Para ti</h3>
   <p>
   Hoy no solo celebramos tu cumpleaños, celebramos lo increíble que eres 💖  
@@ -127,7 +159,11 @@ button{
   </p>
 </div>
 <div style="margin-top:20px;">
- 
+ <a id="btnMusica" href="https://www.youtube.com/results?search_query=Damiano+David+The+First+Time" target="_blank" style="text-decoration:none; display:none;">
+  <div class="boton-musica">
+    🎵
+  </div>
+</a>
 </div>
 <p id="mensaje"></p>
 <a href="https://www.youtube.com/results?search_query=Damiano+David+The+First+Time" target="_blank" style="text-decoration:none;">
@@ -176,6 +212,18 @@ function mostrarCarta(){
 
 function mostrarMusica(){
   document.getElementById("musicaYT").style.display = "block";
+}
+</script>
+  <script>
+function mostrarCarta(){
+  const carta = document.getElementById("carta");
+  const musica = document.getElementById("btnMusica");
+
+  carta.classList.add("mostrar");
+
+  setTimeout(() => {
+    musica.style.display = "block";
+  }, 1500);
 }
 </script>
 </body>
