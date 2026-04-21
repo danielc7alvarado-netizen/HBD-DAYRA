@@ -9,6 +9,41 @@
 <title>Feliz Cumpleaños Dayra 💖</title>
 
 <style>
+  .elemento {
+  position: fixed;
+  bottom: -50px;
+  font-size: 20px;
+  animation: flotar linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+  <script>
+const elementos = ["💖","🎂","📐","✏️"];
+
+setInterval(() => {
+  let el = document.createElement("div");
+  el.className = "elemento";
+  el.innerHTML = elementos[Math.floor(Math.random()*elementos.length)];
+
+  el.style.left = Math.random()*100 + "vw";
+  el.style.fontSize = (Math.random()*20 + 15) + "px";
+  el.style.animationDuration = (Math.random()*3 + 4) + "s";
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), 7000);
+}, 800);
+</script>
 
 body{
   margin:0;
